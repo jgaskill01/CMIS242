@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Asg1GaskillCMIS242/Asg1GaskillCMIS242.iml" filepath="$PROJECT_DIR$/Asg1GaskillCMIS242/Asg1GaskillCMIS242.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Asg2GaskillCMIS242/Asg2GaskillCMIS242.iml" filepath="$PROJECT_DIR$/Asg2GaskillCMIS242/Asg2GaskillCMIS242.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CMIS242.iml" filepath="$PROJECT_DIR$/.idea/CMIS242.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week1DiscussionGaskillCMIS242/Week1DiscussionGaskillCMIS242.iml" filepath="$PROJECT_DIR$/Week1DiscussionGaskillCMIS242/Week1DiscussionGaskillCMIS242.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week1DiscussionReply/Week1DiscussionReply.iml" filepath="$PROJECT_DIR$/Week1DiscussionReply/Week1DiscussionReply.iml" />
+    </modules>
+  </component>
+</project>
