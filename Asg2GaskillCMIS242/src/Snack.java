@@ -1,40 +1,40 @@
-/**
- * @author Jacob Gaskill
- * CMIS 141/6383
- * Completed 10 October 2022
- * @version 1.0
- */
 public class Snack {
-    final double SMALL_PRICE = 19.99;
-    final double MEDIUM_PRICE = 29.99;
-    final double LARGE_PRICE = 39.99;
-
     String id;
     char size;
     double price;
 
 
-    public Snack() {
+    public Snack(){
     }
-
-    public Snack(String id, char size) {
+    public Snack(String id, char size, double price){
         this.id = id;
         this.size = size;
-        this.price = calcPrice(size);
+        this.price = getPrice();
     }
-
-    public double calcPrice(char size) {
-        if (size == 'S') {
-            return SMALL_PRICE;
-        } else if (size == 'M'){
-            return MEDIUM_PRICE;
-        } else {
-            return LARGE_PRICE;
+    public Snack(char size){
+        this.size = size;
+        setPrice(size);
+    }
+    public char getSize(){
+        return size;
+    }
+    public void setSize(){
+        this.size = size;
+    }
+    public void setPrice(char size){
+        switch (size){
+            case 'S': price = 19.99;
+            break;
+            case 'M' : price = 29.99;
+            break;
+            case 'L' : price = 39.99;
         }
     }
-
+    public double getPrice(){
+        return price;
+    }
     public String toString(){
-        return String.format("Type: %s\nSize: %c\nItem ID: %s\nPrice: %.2f",this.getClass().getSimpleName(), size, id, price);
+        return String.format("You have chosen snack type = %s, of type = %c. id = %s, and price = %.2f", getClass().getSimpleName(), size, id, price);
     }
 
 }

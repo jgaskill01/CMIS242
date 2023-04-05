@@ -1,63 +1,46 @@
-/**
- * @author Jacob Gaskill
- * CMIS 141/6383
- * Completed 10 October 2022
- * @version 1.0
- */
 public class FruitSnack extends Snack {
-    boolean isCitrus;
-    final double CITRUS_FEE = 5.99;
+    boolean isCitrusIncluded;
+    double citrusCharge = 5.99;
+
+
 
     public FruitSnack() {
     }
 
-    public FruitSnack(String id, char size) {
-        this(id, size, false);
+    public FruitSnack(char size) {
+        super(size);
+    }
+    public FruitSnack(char size, double price) {
+        this.id = id;
+        this.size = size;
+        this.price = price;
     }
 
-    public FruitSnack(String id, char size, boolean isCitrus){
-        super(id, size);
-        this.isCitrus = isCitrus;
-        this.price = calcPrice(size);
-
+    public FruitSnack(String id, char size, double price){
+        this.id = id;
+        this.size = size;
+        this.price = getPrice();
 
     }
-
-    public String getId() {
+    public void setId(char size){
+        String newId = "F";
+        newId += (int)size;
+        newId += isCitrusIncluded ? "X" : "N";
+        this.id = newId;
+    }
+    public String getId(){
         return id;
     }
-
-    public char getSize() {
-        return size;
+    @Override
+    public void setPrice(char size) {
+        super.setPrice(size);
+        if (isCitrusIncluded) {
+            price += citrusCharge;
+        }
     }
 
     public double getPrice() {
         return price;
     }
-
-    public void setId() {
-        this.id = id;
-    }
-
-    public void setSize() {
-        this.size = size;
-    }
-
-    public void setPrice() {
-        this.price = price;
-    }
-
-    public boolean isCitrus() {
-        return isCitrus;
-    }
-
-    @Override
-    public double calcPrice(char size) {
-        double snackPrice = super.calcPrice(size);
-
-        if (isCitrus()) {
-            snackPrice += CITRUS_FEE;
-        }
-        return snackPrice;
-    }
 }
+

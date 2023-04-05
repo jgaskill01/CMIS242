@@ -1,4 +1,4 @@
-import jdk.jfr.internal.tool.Main;
+import java.util.Scanner;
 
 /**
  * This class contains methods to find the minimum and maximum weights given three
