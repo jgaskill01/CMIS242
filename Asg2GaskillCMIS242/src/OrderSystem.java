@@ -76,6 +76,20 @@ public class OrderSystem {
         return userSizeSelection;
     }
 
+    public Snack getSnackSelection(){
+        foodOptionsDisplay();
+        int snackType = getUserIntSelection();
+        sizePrompt();
+        char size = getUserSizeSelection();
+        upChargeOptionPrompt(snackType);
+        boolean upChargeChoice = getUserBoolSelection();
+        if (snackType == 1){
+            return new FruitSnack(size, upChargeChoice);
+        } else {
+            return new SaltySnack(size, upChargeChoice);
+        }
+    }
+
     public void run() {
         int orderPrompt = 1;
 
@@ -83,19 +97,8 @@ public class OrderSystem {
             mainMenuDisplay();
             orderPrompt = getUserIntSelection();
             if (orderPrompt == 1) {
-                foodOptionsDisplay();
-                int snackType = getUserIntSelection();
-                sizePrompt();
-                char size = getUserSizeSelection();
-                upChargeOptionPrompt(snackType);
-                boolean upChargeChoice = getUserBoolSelection();
-                if (snackType == 1){
-                    Snack fruitSnack1 = new FruitSnack(size, upChargeChoice);
-                    System.out.println(fruitSnack1);
-                } else {
-                    Snack saltySnack1 = new SaltySnack(size, upChargeChoice);
-                    System.out.println(saltySnack1);
-                }
+                Snack snack = getSnackSelection();
+                System.out.println(snack);
             }
         }
         scan.close();
