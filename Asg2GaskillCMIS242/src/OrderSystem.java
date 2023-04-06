@@ -1,13 +1,17 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class OrderSystem {
     Scanner scan = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        OrderSystem orderSystem = new OrderSystem();
+        orderSystem.run();
+    }
+
     public void mainMenuDisplay() {
-        System.out.println("MENU" +
-                "\nPlease select from the below menu options:" +
-                "\n1. Order a Snack" +
-                "\n2. Exit Program");
+        System.out.println("MENU" + "\nPlease select from the below menu options:" + "\n1. Order a Snack" + "\n2. Exit Program");
     }
 
     public void foodOptionsDisplay() {
@@ -30,9 +34,36 @@ public class OrderSystem {
         }
         return userIntSelection;
     }
+    public void upChargeOptionPrompt(int type) {
+        if (type == 1) {
+            System.out.println("Do you want citrus fruit included? true/false: ");
+        } else {
+            System.out.println("Do you want nut snack included? true/false: ");
+        }
+    }
+
+    public boolean getUserBoolSelection() {
+        boolean userBoolSelection = false;
+        while (true) {
+            try {
+                userBoolSelection = scan.nextBoolean();
+                scan.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                scan.nextLine();
+                System.out.println("Invalid Entry, please enter either \"True\" or \"False\"");
+            }
+        }
+        return userBoolSelection;
+
+    }
+
+    public void sizePrompt() {
+        System.out.println("What size do you want: S, M, or L");
+    }
 
     public char getUserSizeSelection() {
-        System.out.println("What size do you want: S, M, or L");
+
         char userSizeSelection = '\0';
         while (true) {
             userSizeSelection = scan.nextLine().toUpperCase().charAt(0);
@@ -45,7 +76,28 @@ public class OrderSystem {
         return userSizeSelection;
     }
 
+    public void run() {
+        int orderPrompt = 1;
 
-    public static void main(String[] args) {
+        while (orderPrompt != 2) {
+            mainMenuDisplay();
+            orderPrompt = getUserIntSelection();
+            if (orderPrompt == 1) {
+                foodOptionsDisplay();
+                int snackType = getUserIntSelection();
+                sizePrompt();
+                char size = getUserSizeSelection();
+                upChargeOptionPrompt(snackType);
+                boolean upChargeChoice = getUserBoolSelection();
+                if (snackType == 1){
+                    Snack fruitSnack1 = new FruitSnack(size, upChargeChoice);
+                    System.out.println(fruitSnack1);
+                } else {
+                    Snack saltySnack1 = new SaltySnack(size, upChargeChoice);
+                    System.out.println(saltySnack1);
+                }
+            }
+        }
+        scan.close();
     }
 }

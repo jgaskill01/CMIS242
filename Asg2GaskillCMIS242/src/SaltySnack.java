@@ -5,18 +5,11 @@ public class SaltySnack extends Snack {
     public SaltySnack() {
     }
 
-    public SaltySnack(char size){
-        this.id = id;
+    public SaltySnack(char size, boolean isNutSnackIncluded){
         this.size = size;
-    }
-    public SaltySnack(String id, char size) {
-        this.id = id;
-        this.size = size;
+        this.isNutSnackIncluded = isNutSnackIncluded;
     }
 
-    public SaltySnack(String id, char size, double price){
-        super(id, size, price);
-    }
     public void setId(char size){
         String newId = "S";
         newId += (int)size;
@@ -26,11 +19,18 @@ public class SaltySnack extends Snack {
     public String getId(){
         return id;
     }
-    @Override
-    public void setPrice(char size) {
-        super.setPrice(size);
+
+    public double calcPrice(){
+        double price = getBasePrice(this.size);
         if (isNutSnackIncluded) {
             price += nutCharge;
         }
+        return price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("You have chosen snack type = Salty Snack, of size = %c. ID = %s, and price = %.2f\n\n", size, id, calcPrice());
+    }
+
 }

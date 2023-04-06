@@ -7,20 +7,9 @@ public class FruitSnack extends Snack {
     public FruitSnack() {
     }
 
-    public FruitSnack(char size) {
+    public FruitSnack(char size, boolean isCitrusIncluded) {
         super(size);
-    }
-    public FruitSnack(char size, double price) {
-        this.id = id;
-        this.size = size;
-        this.price = price;
-    }
-
-    public FruitSnack(String id, char size, double price){
-        this.id = id;
-        this.size = size;
-        this.price = getPrice();
-
+        this.isCitrusIncluded = isCitrusIncluded;
     }
     public void setId(char size){
         String newId = "F";
@@ -31,16 +20,19 @@ public class FruitSnack extends Snack {
     public String getId(){
         return id;
     }
-    @Override
-    public void setPrice(char size) {
-        super.setPrice(size);
+
+    public double calcPrice(){
+        double price = getBasePrice(this.size);
         if (isCitrusIncluded) {
             price += citrusCharge;
         }
-    }
-
-    public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("You have chosen snack type = Fruit Snack, of size = %c, ID = %s, and price = %.2f\n\n", size, id, calcPrice());
+    }
+
 }
 

@@ -1,40 +1,39 @@
-public class Snack {
-    String id;
+public abstract class Snack {
+    String id = "ID#" + ((int) (Math.random() * 1000) + 100);
     char size;
-    double price;
 
+    public Snack() {
+    }
 
-    public Snack(){
-    }
-    public Snack(String id, char size, double price){
-        this.id = id;
+    public Snack(char size) {
         this.size = size;
-        this.price = getPrice();
     }
-    public Snack(char size){
-        this.size = size;
-        setPrice(size);
-    }
-    public char getSize(){
+
+    public abstract double calcPrice();
+
+    public char getSize() {
         return size;
     }
-    public void setSize(){
+
+    public void setSize() {
         this.size = size;
     }
-    public void setPrice(char size){
-        switch (size){
-            case 'S': price = 19.99;
-            break;
-            case 'M' : price = 29.99;
-            break;
-            case 'L' : price = 39.99;
+
+    public double getBasePrice(char size) {
+        switch (size) {
+            case 'S':
+                return 19.99;
+            case 'M':
+                return 29.99;
+            case 'L':
+                return 39.99;
+            default:
+                return 0.00;
         }
     }
-    public double getPrice(){
-        return price;
-    }
-    public String toString(){
-        return String.format("You have chosen snack type = %s, of type = %c. id = %s, and price = %.2f", getClass().getSimpleName(), size, id, price);
+
+    public String toString() {
+        return String.format("You have chosen snack type = %s, of type = %c. id = %s, and price = %.2f\n\n", getClass().getSimpleName(), size, id, calcPrice());
     }
 
 }
