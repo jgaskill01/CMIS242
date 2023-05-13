@@ -3,7 +3,7 @@
  *
  * @author Jacob Gaskill
  * CMIS 242/7380
- * Completed 28 March 2023
+ * Completed 6 Apr 2023
  * @version 1.0
  */
 
@@ -46,6 +46,8 @@ public class MapleBoard extends WoodBoard {
         double bf = getBoardFeet();
         return bf * newPrice;
     }
+
+
 
     @Override
     public String toString() {

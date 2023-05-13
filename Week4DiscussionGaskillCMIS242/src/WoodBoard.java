@@ -3,7 +3,7 @@
  *
  * @author Jacob Gaskill
  * CMIS 242/7380
- * Completed 28 March 2023
+ * Completed 6 Apr 2023
  * @version 1.0
  */
 
@@ -24,6 +24,14 @@ public abstract class WoodBoard {
 
     public abstract double calcPrice();
 
+    public String[] getTableRow(){
+        String entry = getClass().getSimpleName();
+        String entry1 = Integer.toString(getWidth());
+        String entry2 = Integer.toString(getLength());
+        String entry3 = Double.toString(getThickness());
+        String entry4 = String.format("$%.2f", calcPrice());
+        return new String[]{entry, entry1, entry2, entry3, entry4};
+    }
 
     public int getWidth() {
         return width;
